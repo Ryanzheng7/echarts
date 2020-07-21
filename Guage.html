@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts Template</title> 
+    <!-- 引入 echarts.js -->
+    <script src="echarts.js"></script>
+</head>
+<body>  <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        	var option = {
+	    tooltip: {
+	        formatter: "{a} <br/>{b} : {c}%"  // 鼠标点中显示 a Name, b detail c 数字
+	    },
+
+	   toolbox: {
+        	feature: {
+            restore: {},
+            saveAsImage: {}
+        	}
+    	},
+
+	    series: [
+	    {
+	        min: 0,
+	        max: 100,
+	        
+	        axisLabel: {
+                formatter: "{value}%",
+            },
+
+	        axisLine: {
+	            width: 100, 
+	            show: true,
+	            lineStyle: {
+	                width: 20, // 刻度宽度
+	                shadowBlur: 0,
+	                color: [
+	                    [0.3, '#ed1941'], // 30% 对于Min -Max来设置 
+	                    // [0.5, '#282828'], // 预设好几段...
+	                    [0.6, '#f58220'], // 60% 对于Min -Max来设置 
+	                    [1, '#1d953f'] // 100% 对于Min -Max来设置 
+	                ]
+	       
+	            },
+
+	        },
+	        name: 'Test', 
+	        type: 'gauge',
+	        axisTick: {
+	            splitNumber: 20 // 小指针
+	        },
+	        
+	        axisLable: { 
+	        
+	        },
+
+	        title: { //标题 Name 显示的格式
+	            show: true,
+	            offsetCenter: [0, "10%"], // x, y，单位px 标题的位置
+	            textStyle: {
+	                //color: "borderWidth", // 跟随数字的颜色
+	                fontSize: 28 ,//表盘上的标题文字大小
+	                fontStyle: "italic",
+	            }
+	        },
+	        //detail: {formatter:'{value}%'},
+	        detail: {
+	            formatter: "{value}%", // 显示Value的格式
+	            offsetCenter: [0, "60%"], // 表盘数字的位置
+	            textStyle: {
+	                fontSize: 30,
+	                // color: "#5BB1EF"
+	            }
+	        },
+	        data: [{
+	            value: 65,
+	            name: 'Achievement %' 
+	        }]
+
+	       
+	    }]
+	};
+
+        myChart.setOption(option);  // 使用刚指定的配置项和数据显示图表。
+    </script>
+</body>
+</html>

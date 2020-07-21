@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8">
+        <script src='echarts.js'></script>
+        <script src='echarts-wordcloud.js'></script>
+    </head>
+    <body>
+        <style>
+            html, body, #main {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+            }
+        </style>
+        <div id='main'></div>
+        <script>
+            var chart = echarts.init(document.getElementById('main'));
+
+            var option = {
+                tooltip: {},
+                series: [ {
+                    type: 'wordCloud',
+                    gridSize: 2,
+                    sizeRange: [12, 50],
+                    rotationRange: [-90, 90],
+                    shape: 'pentagon', // cardioid心形,diamond菱形,square正方形,triangle-forward指向右边的三角形,triangle-upright正三角形// triangle三角形，pentagon五角形，star五角星形
+                    width: 600,
+                    height: 400,
+                    textStyle: {
+                        normal: {
+                            color: function () {
+                                return 'rgb(' + [
+                                    Math.round(Math.random() * 160),
+                                    Math.round(Math.random() * 160),
+                                    Math.round(Math.random() * 160)
+                                ].join(',') + ')';
+                            }
+                        },
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowColor: '#333'
+                        }
+                    },
+                    data: [
+                        {
+                            name: 'Ryan',
+                            value: 10000,
+                            textStyle: {
+                                normal: {
+                                    color: 'black'
+                                },
+                                emphasis: {
+                                    color: 'red'
+                                }
+                            }
+                        },
+                        {
+                            name: 'BI & Reporting',
+                            value: 6181
+                        },
+                        {
+                            name: 'SOP Process',
+                            value: 4386
+                        },
+                        {
+                            name: 'Analytics',
+                            value: 4055
+                        },
+                        {
+                            name: 'Demand Planning',
+                            value: 2467
+                        },
+                        {
+                            name: 'FP&A',
+                            value: 2244
+                        },
+                        {
+                            name: 'Strategic Planning',
+                            value: 1898
+                        },
+                        {
+                            name: 'Excel',
+                            value: 1484
+                        },
+                        {
+                            name: 'Python',
+                            value: 1112
+                        },
+                        {
+                            name: 'Office',
+                            value: 965
+                        },
+                        {
+                            name: 'SQL',
+                            value: 847
+                        },
+                        {
+                            name: 'R',
+                            value: 582
+                        }
+                        
+                    ]
+                } ]
+            };
+
+            chart.setOption(option);
+
+        </script>
+    </body>
+</html>
